@@ -1,15 +1,17 @@
-// bücke.js
+// brücke.js
 
-// QI = Erkenntnis
-// IQQ = Weis
+// QI = Erkenntnis (Rolle, Ort, Home)
+// IQQ = Weis (Suite, Bildung)
 // Continuum = Zugang durch Qualität
 
-function QI(erkenntnis) {
-    return erkenntnis; // QI↑
+function QI(rolle, ort, home) {
+    // QI↑ = Summe der Tatbestands-Qualität
+    return rolle + ort + home;
 }
 
-function IQQ(weis) {
-    return weis; // IQQ↑
+function IQQ(suite, bildung) {
+    // IQQ↑ = Summe der Vorgangs-Qualität
+    return suite + bildung;
 }
 
 function continuumZugang(qi, iqq) {
