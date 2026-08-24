@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ VECTOR SYSTEM · 6 Vektoren · QI · EARN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a12;
+            color: #0ff;
+            font-family: 'Consolas', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #vector-system {
+            background: #0e0e1a;
+            border: 2px solid #4f4;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #1a1a2a;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header h1 { color: #4f4; font-size: 28px; letter-spacing: 4px; }
+        .header .sub { color: #666; font-size: 12px; }
+
+        .vektor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .vektor {
+            background: #0a0a12;
+            border: 1px solid #1a1a2a;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .vektor .symbol { font-size: 24px; display: block; }
+        .vektor .name { color: #4f4; font-size: 12px; margin: 4px 0; }
+        .vektor .wert { color: #ffd700; font-size: 16px; font-weight: bold; }
+        .vektor .funktion { color: #666; font-size: 8px; }
+
+        .qi-earn {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .qi-earn .box {
+            background: #0a0a12;
+            border: 1px solid #1a1a2a;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .qi-earn .box .label { color: #666; font-size: 9px; text-transform: uppercase; }
+        .qi-earn .box .value { font-size: 22px; font-weight: bold; }
+        .qi-earn .box.qi .value { color: #4a7cff; }
+        .qi-earn .box.earn .value { color: #ffd700; }
+
+        button {
+            background: #111;
+            color: #0ff;
+            border: 1px solid #333;
+            padding: 6px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 10px;
+            transition: all 0.3s;
+            margin: 2px;
+        }
+        button:hover { border-color: #4f4; background: #0a1a0a; }
+
+        #log {
+            background: #06060a;
+            border-radius: 6px;
+            padding: 8px;
+            max-height: 100px;
+            overflow-y: auto;
+            font-size: 8px;
+            color: #6a6a8a;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .footer { font-size: 7px; color: #333; text-align: center; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div id="vector-system">
+    <div class="header">
+        <h1>⚡ VECTOR SYSTEM</h1>
+        <div class="sub">6 Vektoren · QI · EARN · instigriert</div>
+    </div>
+
+    <div class="vektor-grid" id="vektor-grid">
+        <div class="vektor" data-vektor="tiefe">
+            <span class="symbol">⬇</span>
+            <div class="name">TIEFE</div>
+            <div class="wert" id="tiefe-wert">0.50</div>
+            <div class="funktion">Scan · Erkundung</div>
+        </div>
+        <div class="vektor" data-vektor="energie">
+            <span class="symbol">⚡</span>
+            <div class="name">ENERGIE</div>
+            <div class="wert" id="energie-wert">0.50</div>
+            <div class="funktion">Pumpe · Aufladung</div>
+        </div>
+        <div class="vektor" data-vektor="flow">
+            <span class="symbol">～</span>
+            <div class="name">FLOW</div>
+            <div class="wert" id="flow-wert">0.50</div>
+            <div class="funktion">Bewegung · Kontinuität</div>
+        </div>
+        <div class="vektor" data-vektor="pover">
+            <span class="symbol">💪</span>
+            <div class="name">POVER</div>
+            <div class="wert" id="pover-wert">0.50</div>
+            <div class="funktion">Druck · Intensität</div>
+        </div>
+        <div class="vektor" data-vektor="schlag">
+            <span class="symbol">💥</span>
+            <div class="name">SCHLAG</div>
+            <div class="wert" id="schlag-wert">0.50</div>
+            <div class="funktion">Impuls · Aktivierung</div>
+        </div>
+        <div class="vektor" data-vektor="ankunft">
+            <span class="symbol">🏁</span>
+            <div class="name">ANKUNFT</div>
+            <div class="wert" id="ankunft-wert">0.50</div>
+            <div class="funktion">Ziel · Vollendung</div>
+        </div>
+    </div>
+
+    <div class="qi-earn">
+        <div class="box qi">
+            <div class="label">🌊 QI · Lebensenergie</div>
+            <div class="value" id="qi-wert">50</div>
+        </div>
+        <div class="box earn">
+            <div class="label">💰 EARN · Verdienst</div>
+            <div class="value" id="earn-wert">0</div>
+        </div>
+    </div>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+        <button id="btn-pulse">⚡ PULSE</button>
+        <button id="btn-reset">⟲ RESET</button>
+        <button id="btn-bridge">🌉 BRÜCKE</button>
+        <span id="bridge-status" style="font-size:9px;color:#666;">Brücke: offen</span>
+    </div>
+
+    <div id="log">
+        <div class="entry">[INIT] ⚡ VECTOR SYSTEM · 6 Vektoren instigriert</div>
+        <div class="entry">[INIT] 🌊 QI · 💰 EARN · aktiv</div>
+    </div>
+
+    <div class="footer">⚡ VECTOR SYSTEM · 6 Vektoren · QI · EARN · instigriert</div>
+</div>
+
+<script type="module">
+import { VECTOR_SYSTEM } from './vector-system.js';
+
+// ─── DOM ──────────────────────────────────────────────────────
+const logDiv = document.getElementById('log');
+const wertIds = ['tiefe', 'energie', 'flow', 'pover', 'schlag', 'ankunft'];
+const wertElements = {};
+wertIds.forEach(id => {
+    wertElements[id] = document.getElementById(`${id}-wert`);
+});
+
+const qiWert = document.getElementById('qi-wert');
+const earnWert = document.getElementById('earn-wert');
+const bridgeStatus = document.getElementById('bridge-status');
+
+// ─── LOG ──────────────────────────────────────────────────────
+function log(msg) {
+    const entry = document.createElement('div');
+    entry.className = 'entry';
+    const zeit = new Date().toLocaleTimeString();
+    entry.innerHTML = `<span style="color:#444;">[${zeit}]</span> ${msg}`;
+    logDiv.appendChild(entry);
+    logDiv.scrollTop = logDiv.scrollHeight;
+    while (logDiv.children.length > 30) logDiv.removeChild(logDiv.firstChild);
+}
+
+// ─── UPDATE ──────────────────────────────────────────────────
+function updateUI() {
+    const status = VECTOR_SYSTEM.status();
+    wertIds.forEach(id => {
+        wertElements[id].textContent = status.vektoren[id].toFixed(2);
+    });
+    qiWert.textContent = Math.round(status.qi);
+    earnWert.textContent = Math.round(status.earn);
+    bridgeStatus.textContent = `Brücke: ${VECTOR_SYSTEM.brücke.verbindungen.length} Verbindungen`;
+}
+
+// ─── PULSE ──────────────────────────────────────────────────
+function pulse() {
+    // Alle Vektoren leicht bewegen
+    for (const name of wertIds) {
+        const delta = (Math.random() - 0.5) * 0.1;
+        VECTOR_SYSTEM.bewege(name, delta);
+    }
+    VECTOR_SYSTEM.update();
+    updateUI();
+    log('⚡ PULSE: Alle Vektoren bewegt');
+}
+
+// ─── BRÜCKE ──────────────────────────────────────────────────
+function bridge() {
+    const ziele = ['Continuum', 'DeepSpaceNine', 'OS', 'BOOT', '243', 'SUITE'];
+    const ziel = ziele[Math.floor(Math.random() * ziele.length)];
+    const vektor = wertIds[Math.floor(Math.random() * wertIds.length)];
+    VECTOR_SYSTEM.brücke.verbinden(ziel, vektor);
+    updateUI();
+    log(`🌉 Brücke: ${vektor} → ${ziel}`);
+}
+
+// ─── EVENTS ──────────────────────────────────────────────────
+document.getElementById('btn-pulse').addEventListener('click', pulse);
+document.getElementById('btn-bridge').addEventListener('click', bridge);
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+    wertIds.forEach(name => {
+        VECTOR_SYSTEM.vektoren[name].wert = 0.5;
+    });
+    VECTOR_SYSTEM.qi.wert = 50;
+    VECTOR_SYSTEM.earn.wert = 0;
+    VECTOR_SYSTEM.brücke.verbindungen = [];
+    updateUI();
+    log('⟲ RESET: Alle Vektoren zurückgesetzt');
+});
+
+// ─── AUTO ──────────────────────────────────────────────────
+log('⚡ VECTOR SYSTEM: 6 Vektoren instigriert');
+log('🌊 QI: fließend · 💰 EARN: wachsend');
+
+// Alle 2 Sekunden updaten
+setInterval(() => {
+    VECTOR_SYSTEM.update();
+    updateUI();
+}, 2000);
+
+// Initiale Anzeige
+updateUI();
+
+console.log('⚡ VECTOR SYSTEM · 6 Vektoren · QI · EARN · instigriert');
+console.log('📦 Vektoren: Tiefe, Energie, Flow, Pover, Schlag, Ankunft');
+</script>
+</body>
+</html>
