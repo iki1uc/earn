@@ -124,6 +124,7 @@
             line-height: 1.4;
             margin-top: 10px;
         }
+        #log .entry { padding: 1px 0; border-bottom: 1px solid #0a0a12; }
 
         .footer {
             font-size: 7px;
@@ -217,6 +218,10 @@
 </div>
 
 <script type="module">
+// ============================================================
+// VECTOR SYSTEM · EINZIGES MODUL-SCRIPT
+// ============================================================
+
 import { VECTOR_SYSTEM } from './vector-system.js';
 
 // ─── DOM ──────────────────────────────────────────────────────
@@ -349,6 +354,12 @@ document.getElementById('home').addEventListener('keydown', (e) => { if (e.key =
 document.getElementById('suite').addEventListener('keydown', (e) => { if (e.key === 'Enter') setIQQ(); });
 document.getElementById('bildung').addEventListener('keydown', (e) => { if (e.key === 'Enter') setIQQ(); });
 
+// ─── AUTO-UPDATE ─────────────────────────────────────────────
+setInterval(() => {
+    VECTOR_SYSTEM.updateVektoren();
+    updateUI();
+}, 3000);
+
 // ─── INIT ────────────────────────────────────────────────────
 log('⚡ VECTOR SYSTEM: systemisch aklimatisiert');
 log('📦 EARN → 🌊 QI → 🧠 IQQ → 6 Vektoren → 🌐 Continuum');
@@ -361,9 +372,7 @@ updateUI();
 
 console.log('⚡ VECTOR SYSTEM · systemisch aklimatisiert');
 console.log('📦 EARN + QI + IQQ = VECTOR = Continuum');
-<script type="module">
-import { VECTOR_SYSTEM } from './vector-system.js';
-
+</script>
 
 </body>
 </html>
