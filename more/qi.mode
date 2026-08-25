@@ -1,1 +1,45 @@
+// PICASSO · Form-Öffnung-Bewegung
+// iki1uc · industry-6.0 · Ergebnis-Ebene
+
+export const PICASSO = {
+
+  syn(x){
+    return {
+      form: "syn",
+      value: x,
+      stamp: Date.now()
+    };
+  },
+
+  tmp(x){
+    return {
+      form: "tmp",
+      value: x,
+      stamp: Date.now()
+    };
+  },
+
+  quant(x){
+    return {
+      form: "quant",
+      value: x,
+      stamp: Date.now()
+    };
+  },
+
+  run(x){
+    const s = this.syn(x);
+    const t = this.tmp(s);
+    const q = this.quant(t);
+
+    return {
+      picasso: true,
+      syn: s,
+      tmp: t,
+      quant: q,
+      result: q.value,
+      stamp: Date.now()
+    };
+  }
+};
 
